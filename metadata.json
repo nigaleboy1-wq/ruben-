@@ -1,0 +1,6 @@
+{
+  "name": "Premium Agency Hero",
+  "description": "A premium, modern hero section inspired by high-end digital agencies, featuring smooth animations, parallax effects, and a highly polished dark UI.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
