@@ -9,7 +9,8 @@ import Navigation from "./components/Navigation";
 import BackgroundShapes from "./components/BackgroundShapes";
 import HeroContent from "./components/HeroContent";
 import ClientLogos from "./components/ClientLogos";
-const userBg = "https://chatgpt.com/backend-api/estuary/content?id=file_0000000095a872468816cce3a4ab68e6&ts=495611&p=fs&cid=1&sig=e6fe134a4ae08200544a5dd47015c3591dbbeab02b6cd434dc7cccf65eead6e7&v=0";
+import localUserBg from "./assets/images/user_bg.png";
+const chatgptBg = "https://chatgpt.com/backend-api/estuary/content?id=file_0000000095a872468816cce3a4ab68e6&ts=495664&p=fs&cid=1&sig=3363d8fd0dfefa8873241334ac644aa34b5ffc4ed41b7b77d91563fa0c3b1766&v=0";
 import HeroRealisations from "./components/HeroRealisations";
 import RealisationsPage from "./components/RealisationsPage";
 import ContactPage from "./components/ContactPage";
@@ -19,6 +20,7 @@ import { Compass, ArrowUpRight } from "lucide-react";
 export default function App() {
   const [mousePos, setMousePos] = useState<MousePosition>({ x: 0, y: 0 });
   const [activePage, setActivePage] = useState<"home" | "realisations" | "contact" >("home");
+  const [heroImgSrc, setHeroImgSrc] = useState<string>(chatgptBg);
 
   const imgX = mousePos.x * -12;
   const imgY = mousePos.y * -8;
@@ -79,11 +81,12 @@ export default function App() {
                   <motion.div
                     style={{ x: imgX, y: imgY }}
                     transition={{ type: "spring", stiffness: 18, damping: 14 }}
-                    className="relative w-full max-w-6xl h-full flex items-center justify-center opacity-85"
+                    className="relative w-full max-w-6xl h-full flex items-center justify-center opacity-100"
                   >
                     <img
-                      src={userBg}
-                      alt="Atelier Digital Hero Background"
+                      src={heroImgSrc}
+                      onError={() => setHeroImgSrc(localUserBg)}
+                      alt=""
                       referrerPolicy="no-referrer"
                       className="w-full h-full max-h-[75vh] object-contain select-none pointer-events-none transition-all duration-300"
                     />

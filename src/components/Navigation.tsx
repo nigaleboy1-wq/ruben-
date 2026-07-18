@@ -21,13 +21,44 @@ export default function Navigation({ activePage, setActivePage }: NavigationProp
 
   return (
     <>
+      {/* Mobile Top Navigation Header (Displays Logo in the top space highlighted by the user) */}
+      <motion.div
+        id="mobile-header"
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        className="fixed top-0 left-0 right-0 z-50 h-[64px] md:hidden flex items-center justify-between border-b border-white/[0.06] bg-white/[0.02] backdrop-blur-xl px-6"
+      >
+        <button
+          id="mobile-logo-btn"
+          onClick={() => setActivePage("home")}
+          className="flex items-center gap-2 group focus:outline-none bg-transparent border-none p-0 cursor-pointer"
+        >
+          <div className="relative flex items-center justify-center w-8 h-8 rounded-lg bg-white/[0.03] border border-white/10">
+            <Compass className="w-4 h-4 text-white" />
+          </div>
+          <span className="text-sm font-bold font-sans tracking-tight text-white">
+            Capitaine<span className="text-zinc-400">Site</span>
+          </span>
+        </button>
+
+        <button
+          id="mobile-cta-btn"
+          onClick={() => setActivePage("contact")}
+          className="flex items-center gap-1 text-[11px] font-mono uppercase tracking-wider text-white/90 hover:text-white bg-white/[0.06] hover:bg-white/[0.12] px-3.5 py-1.5 rounded-full border border-white/[0.1] cursor-pointer transition-all"
+        >
+          Contact
+          <ArrowUpRight className="w-3 h-3" />
+        </button>
+      </motion.div>
+
       {/* Desktop Sticky Navigation (Hidden on Mobile) */}
       <motion.nav
         id="navbar"
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className="fixed top-0 left-0 right-0 z-50 h-[90px] hidden md:flex items-center border-b border-white/[0.04] bg-[#090909]/40 backdrop-blur-md px-12 transition-all"
+        className="fixed top-0 left-0 right-0 z-50 h-[80px] hidden md:flex items-center border-b border-white/[0.06] bg-white/[0.01] backdrop-blur-2xl px-12 transition-all"
       >
         <div className="w-full max-w-7xl mx-auto flex items-center justify-between">
           {/* Left: Logo */}
@@ -61,16 +92,16 @@ export default function Navigation({ activePage, setActivePage }: NavigationProp
             ))}
           </div>
 
-          {/* Right: Primary CTA Button */}
+          {/* Right: Primary CTA Button (Contact) */}
           <div className="flex items-center gap-4">
             <motion.button
               id="nav-cta-desktop"
               onClick={() => setActivePage("contact")}
-              whileHover={{ scale: 1.03, y: -1 }}
+              whileHover={{ scale: 1.02, y: -0.5 }}
               whileTap={{ scale: 0.98 }}
-              className="flex items-center gap-1.5 h-10 px-5 bg-white text-black font-semibold text-sm rounded-full shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_25px_rgba(255,255,255,0.2)] transition-all duration-300 cursor-pointer"
+              className="flex items-center gap-1.5 h-9 px-5 bg-white text-black hover:bg-zinc-100 font-semibold text-xs md:text-sm rounded-full transition-all duration-300 cursor-pointer"
             >
-              Devis Gratuit
+              Contact
               <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
             </motion.button>
           </div>
