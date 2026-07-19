@@ -93,7 +93,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div id="contact-page" className="w-full min-h-screen py-24 md:py-36 px-6 md:px-12 bg-black selection:bg-zinc-500/30 flex items-center justify-center">
+    <div id="contact-page" className="w-full min-h-screen py-24 md:py-36 px-6 md:px-12 bg-transparent selection:bg-zinc-500/30 flex items-center justify-center">
       <div className="w-full max-w-7xl mx-auto">
         
         <AnimatePresence mode="wait">
@@ -139,7 +139,7 @@ export default function ContactPage() {
 
                 {/* Direct Action Contacts */}
                 <div className="flex flex-col gap-4 max-w-md border-t border-white/[0.06] pt-10">
-                  <div className="flex items-center justify-between p-4 rounded-xl bg-[#0c0c0c]/80 border border-white/[0.04] hover:border-white/[0.08] transition-all duration-300">
+                  <div className="flex items-center justify-between p-4 rounded-xl bg-[#0e1627]/80 border border-white/[0.04] hover:border-white/[0.08] transition-all duration-300">
                     <div className="flex items-center gap-3.5">
                       <div className="w-9 h-9 rounded-lg bg-zinc-500/10 border border-zinc-500/20 flex items-center justify-center text-zinc-300">
                         <Mail className="w-4 h-4" />
@@ -159,7 +159,7 @@ export default function ContactPage() {
                     </button>
                   </div>
 
-                  <div className="flex items-center justify-between p-4 rounded-xl bg-[#0c0c0c]/80 border border-white/[0.04] hover:border-white/[0.08] transition-all duration-300">
+                  <div className="flex items-center justify-between p-4 rounded-xl bg-[#0e1627]/80 border border-white/[0.04] hover:border-white/[0.08] transition-all duration-300">
                     <div className="flex items-center gap-3.5">
                       <div className="w-9 h-9 rounded-lg bg-zinc-500/10 border border-zinc-500/20 flex items-center justify-center text-zinc-300">
                         <Clock className="w-4 h-4" />
@@ -183,7 +183,7 @@ export default function ContactPage() {
               <div className="lg:col-span-7 flex flex-col gap-8">
                 
                 {/* Form Mode Selector Toggles */}
-                <div className="flex bg-[#0d0d0d] p-1 rounded-full border border-white/[0.06] max-w-[340px]">
+                <div className="flex bg-[#09101c] p-1 rounded-full border border-white/[0.06] max-w-[340px]">
                   <button
                     onClick={() => setFormMode("brief")}
                     className={`flex-1 py-2 text-[10px] font-mono uppercase tracking-wider rounded-full transition-all cursor-pointer ${
@@ -210,7 +210,7 @@ export default function ContactPage() {
                 <form
                   id="contact-interactive-form"
                   onSubmit={handleSubmit}
-                  className="p-8 sm:p-10 md:p-12 rounded-3xl bg-gradient-to-br from-[#0c0c0c] to-[#060606] border border-white/[0.06] relative flex flex-col justify-between min-h-[460px]"
+                  className="p-8 sm:p-10 md:p-12 rounded-3xl bg-gradient-to-br from-[#0e1627] to-[#060b13] border border-white/[0.06] relative flex flex-col justify-between min-h-[460px]"
                 >
                   <div className="absolute top-0 right-0 w-44 h-44 bg-zinc-500/5 rounded-full blur-3xl pointer-events-none" />
 
@@ -252,7 +252,7 @@ export default function ContactPage() {
                           <select
                             value={siteType}
                             onChange={(e) => setSiteType(e.target.value)}
-                            className="inline-block bg-[#0f0f0f] border-b border-white/30 focus:border-white focus:outline-none px-2 py-1 text-white font-sans font-bold cursor-pointer rounded-lg text-sm sm:text-lg"
+                            className="inline-block bg-[#0e1627] border-b border-white/30 focus:border-white focus:outline-none px-2 py-1 text-white font-sans font-bold cursor-pointer rounded-lg text-sm sm:text-lg"
                           >
                             <option value="un Site E-Commerce">un Site E-Commerce Premium</option>
                             <option value="un Portfolio d'Exception">un Portfolio d'Exception</option>
@@ -263,7 +263,7 @@ export default function ContactPage() {
                           <select
                             value={budget}
                             onChange={(e) => setBudget(e.target.value)}
-                            className="inline-block bg-[#0f0f0f] border-b border-white/30 focus:border-white focus:outline-none px-2 py-1 text-white font-sans font-bold cursor-pointer rounded-lg text-sm sm:text-lg"
+                            className="inline-block bg-[#0e1627] border-b border-white/30 focus:border-white focus:outline-none px-2 py-1 text-white font-sans font-bold cursor-pointer rounded-lg text-sm sm:text-lg"
                           >
                             <option value="< 5k€">&lt; 5 000 €</option>
                             <option value="5k€ - 15k€">5 000 € – 15 000 €</option>
@@ -339,7 +339,7 @@ export default function ContactPage() {
                             <select
                               value={budget}
                               onChange={(e) => setBudget(e.target.value)}
-                              className="w-full h-12 px-4 bg-[#0d0d0d] border border-white/[0.12] focus:border-white rounded-xl text-white text-sm outline-none transition-all cursor-pointer font-medium"
+                              className="w-full h-12 px-4 bg-[#09101c] border border-white/[0.12] focus:border-white rounded-xl text-white text-sm outline-none transition-all cursor-pointer font-medium"
                             >
                               <option value="< 5k€">&lt; 5 000 €</option>
                               <option value="5k€ - 15k€">5 000 € – 15 000 €</option>
@@ -407,7 +407,7 @@ export default function ContactPage() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="max-w-xl mx-auto p-10 md:p-12 rounded-3xl bg-[#0c0c0c] border border-white/[0.08] text-center flex flex-col items-center relative overflow-hidden"
+              className="max-w-xl mx-auto p-10 md:p-12 rounded-3xl bg-[#0e1627] border border-white/[0.08] text-center flex flex-col items-center relative overflow-hidden"
             >
               <div className="absolute -top-12 -left-12 w-44 h-44 bg-zinc-500/10 rounded-full blur-3xl pointer-events-none" />
               

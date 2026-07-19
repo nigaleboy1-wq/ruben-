@@ -4,7 +4,7 @@
  */
 
 import { motion } from "motion/react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 
 interface HeroContentProps {
   onCtaClick: () => void;
@@ -39,8 +39,13 @@ export default function HeroContent({ onCtaClick }: HeroContentProps) {
         variants={fadeInUpVariants}
         className="mb-6 flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] shadow-[0_4px_30px_rgba(0,0,0,0.15)] backdrop-blur-sm group hover:border-zinc-500/30 transition-all duration-300 cursor-default"
       >
+        <Sparkles className="w-3.5 h-3.5 text-zinc-300 group-hover:rotate-12 transition-transform duration-300" />
         <span className="text-xs md:text-sm font-medium tracking-wide text-white font-semibold">
           Agence Web WordPress & SEO
+        </span>
+        <span className="relative flex h-2 w-2 ml-1">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-zinc-400 opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-2 w-2 bg-zinc-300"></span>
         </span>
       </motion.div>
 

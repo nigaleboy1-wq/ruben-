@@ -154,7 +154,7 @@ export default function HeroRealisations() {
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover opacity-80 group-hover/card:scale-105 group-hover/card:opacity-100 transition-all duration-700 ease-out"
+                    className="w-full h-full object-cover opacity-35 group-hover/card:scale-105 group-hover/card:opacity-55 transition-all duration-700 ease-out"
                   />
                 </div>
 
@@ -245,7 +245,7 @@ export default function HeroRealisations() {
                 <img
                   src={selectedProject.image}
                   alt={selectedProject.title}
-                  className="absolute inset-0 w-full h-full object-cover opacity-100"
+                  className="absolute inset-0 w-full h-full object-cover opacity-70"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent" />
                 <div className="relative z-10">

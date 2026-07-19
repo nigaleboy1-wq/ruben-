@@ -7,23 +7,58 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import Navigation from "./components/Navigation";
 import BackgroundShapes from "./components/BackgroundShapes";
+import BackgroundControls, { BgSettings } from "./components/BackgroundControls";
 import HeroContent from "./components/HeroContent";
 import ClientLogos from "./components/ClientLogos";
-import localUserBg from "./assets/images/user_bg.png";
-const chatgptBg = "https://chatgpt.com/backend-api/estuary/content?id=file_0000000095a872468816cce3a4ab68e6&ts=495664&p=fs&cid=1&sig=3363d8fd0dfefa8873241334ac644aa34b5ffc4ed41b7b77d91563fa0c3b1766&v=0";
 import HeroRealisations from "./components/HeroRealisations";
 import RealisationsPage from "./components/RealisationsPage";
 import ContactPage from "./components/ContactPage";
 import { MousePosition } from "./types";
 import { Compass, ArrowUpRight } from "lucide-react";
+import heroBg from "./assets/images/hero_background_1784203627132.jpg";
+
+const DEFAULT_BG_SETTINGS: BgSettings = {
+  brightness: 100,
+  opacity: 85,
+  yPosition: 50,
+  xPosition: 50,
+  blur: 0,
+  scale: 100,
+  height: 60,
+};
 
 export default function App() {
   const [mousePos, setMousePos] = useState<MousePosition>({ x: 0, y: 0 });
   const [activePage, setActivePage] = useState<"home" | "realisations" | "contact" >("home");
-  const [heroImgSrc, setHeroImgSrc] = useState<string>(chatgptBg);
+  const [bgSettings, setBgSettings] = useState<BgSettings>(() => {
+    try {
+      const saved = localStorage.getItem("capitainesite_bg_settings");
+      if (saved) {
+        return JSON.parse(saved);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+    return DEFAULT_BG_SETTINGS;
+  });
 
-  const imgX = mousePos.x * -12;
-  const imgY = mousePos.y * -8;
+  const handleBgSettingsChange = (newSettings: BgSettings) => {
+    setBgSettings(newSettings);
+    try {
+      localStorage.setItem("capitainesite_bg_settings", JSON.stringify(newSettings));
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const handleBgSettingsReset = () => {
+    setBgSettings(DEFAULT_BG_SETTINGS);
+    try {
+      localStorage.setItem("capitainesite_bg_settings", JSON.stringify(DEFAULT_BG_SETTINGS));
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -53,8 +88,8 @@ export default function App() {
       id="root-container"
       className="relative min-h-screen w-full text-white font-sans overflow-x-hidden flex flex-col justify-between"
     >
-      {/* Dynamic Background with SVG Shapes and Parallax Glow */}
-      <BackgroundShapes mousePos={mousePos} />
+      {/* Global Dynamic Background with SVG Shapes and Parallax Glow (Fixed behind all content) */}
+      <BackgroundShapes mousePos={mousePos} settings={bgSettings} activePage={activePage} />
 
       {/* Transparent Sticky Navigation */}
       <Navigation activePage={activePage} setActivePage={setActivePage} />
@@ -74,29 +109,16 @@ export default function App() {
               {/* Main Hero Column: Badge, Title, Paragraph, CTA */}
               <main
                 id="hero-main"
-                className="relative flex flex-col items-center justify-center min-h-screen pt-[120px] pb-12 md:pt-[140px] md:pb-24 overflow-hidden"
+                className="relative flex flex-col items-center justify-center min-h-[90vh] md:min-h-screen w-full pt-[120px] pb-16 overflow-hidden bg-cover bg-center bg-no-repeat"
+                style={{
+                  backgroundImage: `url(${heroBg})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  backgroundRepeat: "no-repeat",
+                  backgroundAttachment: "scroll",
+                }}
               >
-                {/* Hero-specific background image - strictly limited to the hero-main container, bien visible, sans agrandissement */}
-                <div className="absolute inset-0 w-full h-full pointer-events-none select-none z-0 flex items-center justify-center overflow-hidden">
-                  <motion.div
-                    style={{ x: imgX, y: imgY }}
-                    transition={{ type: "spring", stiffness: 18, damping: 14 }}
-                    className="relative w-full max-w-6xl h-full flex items-center justify-center opacity-100"
-                  >
-                    <img
-                      src={heroImgSrc}
-                      onError={() => setHeroImgSrc(localUserBg)}
-                      alt=""
-                      referrerPolicy="no-referrer"
-                      className="w-full h-full max-h-[75vh] object-contain select-none pointer-events-none transition-all duration-300"
-                    />
-                  </motion.div>
-                  {/* Premium subtle gradient overlays to merge into the dark background */}
-                  <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#090909] via-[#090909]/60 to-transparent" />
-                  <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#090909] via-[#090909]/40 to-transparent" />
-                </div>
-
-                <div className="w-full max-w-7xl mx-auto flex flex-col items-center justify-center gap-12 md:gap-16 px-6 md:px-12 z-10">
+                <div className="relative z-20 w-full max-w-7xl mx-auto flex flex-col items-center justify-center gap-12 md:gap-16 px-6 md:px-12">
                   <HeroContent onCtaClick={() => setActivePage("contact")} />
                   <ClientLogos />
                 </div>
@@ -175,6 +197,15 @@ export default function App() {
           </div>
         </div>
       </footer>
+
+      {/* Floating control panel to adjust background image dynamically */}
+      {activePage === "realisations" && (
+        <BackgroundControls
+          settings={bgSettings}
+          onChange={handleBgSettingsChange}
+          onReset={handleBgSettingsReset}
+        />
+      )}
     </div>
   );
 }

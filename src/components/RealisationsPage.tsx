@@ -155,7 +155,7 @@ export default function RealisationsPage() {
     : projects.filter(p => p.category === activeFilter.toUpperCase());
 
   return (
-    <div id="realisations-page" className="w-full min-h-screen py-24 md:py-36 px-6 md:px-12 bg-black selection:bg-zinc-500/30">
+    <div id="realisations-page" className="w-full min-h-screen py-24 md:py-36 px-6 md:px-12 bg-transparent selection:bg-zinc-500/30">
       <div className="w-full max-w-7xl mx-auto">
         
         {/* Editorial Page Header */}
@@ -249,7 +249,7 @@ export default function RealisationsPage() {
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover opacity-95 group-hover:opacity-100 transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] scale-100 group-hover:scale-[1.03]"
+                    className="w-full h-full object-cover grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] scale-100 group-hover:scale-[1.03]"
                     referrerPolicy="no-referrer"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-90" />

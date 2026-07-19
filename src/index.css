@@ -5,10 +5,59 @@
   --font-sans: "Plus Jakarta Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Plus Jakarta Sans", "Outfit", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
+
+  /* Premium theme override: mapping all gray hues directly to the requested #1B2B4A brand colors */
+  --color-zinc-50: #edf3fa;
+  --color-zinc-100: #dae5f5;
+  --color-zinc-200: #b4cbe9;
+  --color-zinc-300: #7ea3d7;
+  --color-zinc-400: #4a77bd;
+  --color-zinc-500: #1b2b4a; /* Main requested brand color */
+  --color-zinc-600: #15223a;
+  --color-zinc-700: #101a2c;
+  --color-zinc-800: #0b111d;
+  --color-zinc-900: #060a12;
+  --color-zinc-950: #030509;
+
+  --color-slate-50: #edf3fa;
+  --color-slate-100: #dae5f5;
+  --color-slate-200: #b4cbe9;
+  --color-slate-300: #7ea3d7;
+  --color-slate-400: #4a77bd;
+  --color-slate-500: #1b2b4a;
+  --color-slate-600: #15223a;
+  --color-slate-700: #101a2c;
+  --color-slate-800: #0b111d;
+  --color-slate-900: #060a12;
+  --color-slate-950: #030509;
+
+  --color-gray-50: #edf3fa;
+  --color-gray-100: #dae5f5;
+  --color-gray-200: #b4cbe9;
+  --color-gray-300: #7ea3d7;
+  --color-gray-400: #4a77bd;
+  --color-gray-500: #1b2b4a;
+  --color-gray-600: #15223a;
+  --color-gray-700: #101a2c;
+  --color-gray-800: #0b111d;
+  --color-gray-900: #060a12;
+  --color-gray-950: #030509;
+
+  --color-neutral-50: #edf3fa;
+  --color-neutral-100: #dae5f5;
+  --color-neutral-200: #b4cbe9;
+  --color-neutral-300: #7ea3d7;
+  --color-neutral-400: #4a77bd;
+  --color-neutral-500: #1b2b4a;
+  --color-neutral-600: #15223a;
+  --color-neutral-700: #101a2c;
+  --color-neutral-800: #0b111d;
+  --color-neutral-900: #060a12;
+  --color-neutral-950: #030509;
 }
 
 body {
-  background-color: #090909;
+  background-color: #080c16;
 }
 
 @layer utilities {

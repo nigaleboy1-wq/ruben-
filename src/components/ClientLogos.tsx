@@ -74,8 +74,8 @@ export default function ClientLogos() {
       {/* Logos Infinite Marquee Wrapper */}
       <div className="relative w-full overflow-hidden py-3 select-none">
         {/* Soft fade gradients on left and right edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-[#090909] to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[#090909] to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-[#080c16] to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[#080c16] to-transparent z-10 pointer-events-none" />
 
         <div className="flex w-max animate-marquee gap-16 md:gap-24 items-center">
           {marqueeLogos.map((logo, idx) => (
